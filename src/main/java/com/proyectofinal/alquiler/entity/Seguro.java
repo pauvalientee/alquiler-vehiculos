@@ -1,5 +1,6 @@
 package com.proyectofinal.alquiler.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,4 +17,9 @@ public class Seguro {
     private String tipo;
     private Double precioDia;
     private String cobertura;
+
+    @OneToOne
+    @JoinColumn(name = "vehiculo_id")
+    @JsonBackReference
+    private Vehiculo vehiculo;
 }

@@ -1,5 +1,6 @@
 package com.proyectofinal.alquiler.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -26,4 +27,12 @@ public class Vehiculo {
     @OneToMany(mappedBy = "vehiculo", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "alquiler-vehiculo")
     private List<Alquiler> alquileres;
+
+    @OneToOne(mappedBy = "vehiculo", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Seguro seguro;
+
+    @ManyToMany(mappedBy = "vehiculos")
+    @JsonIgnore
+    private List<Sucursal> sucursales;
 }

@@ -28,4 +28,8 @@ public class Alquiler {
     @JoinColumn(name = "vehiculo_id")
     @JsonBackReference(value = "alquiler-vehiculo")
     private Vehiculo vehiculo;
+
+    @ManyToOne
+    @JoinColumn(name = "sucursal_id")
+    private Sucursal sucursal;
 }
